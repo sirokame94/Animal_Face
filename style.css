@@ -338,3 +338,8 @@ body {
     border-radius: 10px;
     background-color: rgba(235, 166, 190, 1);
 }
+
+.ad-banner {
+    width: 320px;
+    margin: 0 auto;
+}
