@@ -6,6 +6,7 @@ body {
 .file-upload {
     background-color: #ffffff;
     width: 600px;
+    margin-bottom: 50px;
 }
 
 .file-upload-btn {
@@ -232,6 +233,7 @@ body {
     border-radius: 7px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 50px;
 }
 
 .result-message {
