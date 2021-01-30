@@ -339,7 +339,12 @@ body {
     background-color: rgba(235, 166, 190, 1);
 }
 
-.ad-banner {
+.ad-banner1 {
     width: 320px;
     margin: 0 auto;
+}
+
+.ad-banner2 {
+    width: 320px;
+    margin: 30 auto;
 }
