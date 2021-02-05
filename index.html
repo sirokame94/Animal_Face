@@ -231,27 +231,35 @@
 				const prediction = await model.predict(image, false);
 				prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
 				console.log(prediction[0].className);
-				var resultMessage;
+				var resultMessage, resultExplain;
 				switch (prediction[0].className) {
 					case '犬':
 						resultMessage = 'かわいくておとなしい犬！';
+						resultExplain = '優しくて可愛いあなたは全ての人に楽しさを与える好感型だ！ 親切で活発な性格で、どこでも人気爆発し、愛嬌と笑いが多くて恋人に特に愛らしい。 あなたは恋人の世話で恋人の関心が足りないとふくれっ面をして寂しがる姿がまるで犬とそっくりだ！';
 						break;
 					case '猫':
 						resultMessage = 'ツンデレ魅力屋ねこ！';
+						resultExplain = '無愛想なあなたの第一印象は冷たく見えるが、妙な魅力があり、いつも人気が溢れている。 プライドは世界トップに匹敵するが、関心を集めることを好み、恋人にはそれとなく愛嬌たっぷりだ。 シックなツンデレで恋人に絶えずときめきを抱かせるあなたは猫に似ている!';
 						break;
 					case '鹿':
 						resultMessage = '神妙な鹿！';
+						resultExplain = '澄んだ澄んだ澄んだ雰囲気のあなたは，鹿のように落ち着いた性格の持ち主だ. きらきら輝く瞳があなたの最大のトレードマークであり、暖かくておとなしい眼差しでいつも愛らしさを含んでいる！ 恥ずかしさが多く、愛情表現が不慣れなあなたは、恋人にさえ神秘的な存在だが、暖かい性格で恋人の心をつかむ能力を持っている。';
 						break;
 					case '狐':
 						resultMessage = 'セクシーな駆け引きキツネ！';
+						resultExplain = '人を魅了する魅力を持つあなたは、近寄りがたいセクシーな魅力を持っている。 エレガントなルックスに加え、優れたセンスを持つあなたはどこへ行っても注目される主人公だ！ 社交的な性格の持ち主で、恋人にも積極的に愛情表現をするが、駆け引きの達人であるあなたは、恋人の魂をぐいっと引き抜く魅力屋だ。';
 						break;
 					case '兎':
 						resultMessage = 'さわやかではつらつとした魅力のウサギ！';
+						resultExplain = '無邪気で可愛いあなたは周りの人に喜びを与える幸せウイルスだ！ 好奇心旺盛で活発で、可愛くて純粋な容姿で恋人の保護本能を刺激する。 存在自体がさわやかなあなたは特別な愛嬌なしにも恋人にとても愛らしい！';
 						break;
 					default:
 						resultMessage = '알수없음';
+						resultExplain = ''
 				}
-				$('.result-message').html(resultMessage);
+				var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultMessage + "</div>"
+            			var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
+				$('.result-message').html(title + explain);
 				var barWidth;
 				for (let i = 0; i < maxPredictions; i++) {
 					if (prediction[i].probability.toFixed(2) > 0.1) {
